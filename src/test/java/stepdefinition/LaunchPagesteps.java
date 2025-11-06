@@ -1,15 +1,38 @@
 package stepdefinition;
 
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.WebDriver;
+
+import driverfactory.DriverFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import pageobjects.LaunchPage;
+import utils.Excel_Reader;
+import utils.TestContextSetup;
 
 public class LaunchPagesteps {
 	
+	
+		 TestContextSetup context;
+		 DriverFactory driverFactory;
+		 public WebDriver driver;
+	      public LaunchPage launchpage;
+	      Excel_Reader excelreader;
+	      Alert alert;
+		
+	      
+	 public LaunchPagesteps(TestContextSetup context) {
+				
+			this.context=context;
+			launchpage=context.getpageobjectmanager().getlaunchpage();
+			this.driver=DriverFactory.Driver();
+			excelreader = context.getexcelreader();
+		}
+	
 	@Given("User is on the browser")
 	public void user_is_on_the_browser() {
-	    // Write code here that turns the phrase above into concrete actions
-	    throw new io.cucumber.java.PendingException();
+	   launchpage.NewProgram();     
 	}
 
 	@When("User enters app url")
