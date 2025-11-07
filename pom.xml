@@ -4,8 +4,8 @@
   <artifactId>HerBalance-Automation</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   
-
 <dependencies>
+<<<<<<< Updated upstream
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
 <dependency>
     <groupId>io.cucumber</groupId>
@@ -13,10 +13,19 @@
     <version>7.31.0</version>
 </dependency>
 <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+=======
+>>>>>>> Stashed changes
 <dependency>
     <groupId>org.seleniumhq.selenium</groupId>
     <artifactId>selenium-java</artifactId>
-    <version>4.38.0</version>
+    <version>4.31.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>7.11.0</version>
+    <scope>test</scope>
 </dependency>
 <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
 <dependency>
@@ -24,7 +33,12 @@
     <artifactId>cucumber-java</artifactId>
     <version>7.31.0</version>
 </dependency>
- 
+<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+<dependency>
+    <groupId>io.cucumber</groupId>
+    <artifactId>cucumber-testng</artifactId>
+    <version>7.31.0</version>
+</dependency>
 <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 <dependency>
     <groupId>org.slf4j</groupId>
@@ -68,4 +82,5 @@
     <version>7.17.0</version>
 </dependency>
 </dependencies>
+
 </project>
