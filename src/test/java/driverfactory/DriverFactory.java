@@ -18,15 +18,15 @@ public class DriverFactory {
 	static ResourceBundle rb; // for reading properties file
 	static String br; // for storing browser name
 
-	private static WebDriver getDriver()  {
-		//rb = ResourceBundle.getBundle("config");
-		//br = rb.getString("browser");
-		
+	private static WebDriver getDriver() {
+		// rb = ResourceBundle.getBundle("config");
+		// br = rb.getString("browser");
+
 		ChromeOptions options = new ChromeOptions();
 		options.setAcceptInsecureCerts(false);
-		//options.addArguments("--headless");
+		// options.addArguments("--headless");
 		try {
-			br =  PropertyFileReader.getbrowser();
+			br = PropertyFileReader.getbrowser();
 		} catch (Throwable e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,9 +39,8 @@ public class DriverFactory {
 		} else if (br.equalsIgnoreCase("Firefox")) {
 			driver = new FirefoxDriver();
 		}
-		
-		
-		//driver.manage().deleteAllCookies();
+
+		// driver.manage().deleteAllCookies();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 
@@ -87,6 +86,5 @@ public class DriverFactory {
 		return driver.getCurrentUrl();
 
 	}
-	
-}
 
+}

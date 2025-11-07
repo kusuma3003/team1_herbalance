@@ -11,19 +11,19 @@ import io.cucumber.java.Scenario;
 import utils.LoggerLoad;
 import utils.TestContextSetup;
 
-
 public class Hooks {
 
 	private TestContextSetup context;
 
 	public Hooks() {
-		
+
 	}
+
 	@Before(order = 0)
 	public static void setup() {
 		LoggerLoad.info("setup browser");
 		DriverFactory.setupDriver();
-		//TestContextSetup.setupDriver();
+		// TestContextSetup.setupDriver();
 
 	}
 
@@ -31,7 +31,7 @@ public class Hooks {
 	public static void getbrowser() {
 		LoggerLoad.info("get driver");
 		DriverFactory.Driver();
-		//TestContextSetup.Driver();
+		// TestContextSetup.Driver();
 	}
 
 	@After(order = 0)
@@ -46,9 +46,9 @@ public class Hooks {
 
 	@AfterAll
 	public static void after() {
-		//SetupDriver.TearDown();
-		//TestContextSetup.TearDown();
+		// SetupDriver.TearDown();
+		// TestContextSetup.TearDown();
 
 	}
-	
+
 }
