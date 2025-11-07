@@ -25,7 +25,7 @@ public class Launchsteps {
 	public WebDriver driver;
 	public LaunchPage launchpage;
 	Excel_Reader excelreader;
-	Alert alert;
+	//Alert alert;
 
 	public Launchsteps(TestContextSetup context) {
 
