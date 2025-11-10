@@ -6,7 +6,7 @@ public class PageObjectManager {
 
 	public WebDriver driver;
 	public LaunchPage launchpage;
-	
+	public LoginPage loginpage;
 
 	
 
@@ -24,7 +24,12 @@ public class PageObjectManager {
 		return launchpage;
 	}
 
-	
+	public LoginPage getloginpage() {
+		if (launchpage == null) {
+			launchpage = new LaunchPage(driver);
+		}
+		return loginpage;
+	}
 
 	
 
