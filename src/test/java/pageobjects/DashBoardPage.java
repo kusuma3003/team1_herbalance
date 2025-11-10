@@ -1,5 +1,6 @@
 package pageobjects;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.testng.Assert;
@@ -28,6 +29,7 @@ public class DashBoardPage {
 	By Bellicon = By.xpath("//img[@name='bell']");
 	By Searchbar = By.className("Pke_EE");	
 	By Menu =By.xpath("//div[@class='_3sdu8W emupdz']");
+	By getmenu = By.xpath("//*[text()='headbar']");
 	By MenuActivityinsight =By.xpath("//div[@class='_3sdu8W emupdz']/div[1]");
 	By MenuDietplan =By.xpath("//div[@class='_3sdu8W emupdz']/div[2]");
 	By MenuWorkout =By.xpath("//div[@class='_3sdu8W emupdz']/div[3]");
@@ -149,7 +151,7 @@ public class DashBoardPage {
 		driver.findElement(Menuwater).click();
 	}
 	
-	public void getMenu() {
+	/*public void getMenu() {
 	
 	WebElement menuContainer = driver.findElement(By.cssSelector("ul.menu, nav.menu, div.navbar"));
 
@@ -161,7 +163,38 @@ public class DashBoardPage {
     for (WebElement item : menuItems) {
         System.out.println("- " + item.getText());
     }
-    }
+    }*/
+	
+	public void getMenu() {
+		List<String> expectedLabels = Arrays.asList(
+	            "User Name",
+	            "Activity Insights",
+	            "Diet Plan",
+	            "Workout",
+	            "Water Tracker",
+	            "View Full Cycle Details",
+	            "Upload Blood Report",
+	            "Upgrade to Premium",
+	            "Generate 7-Day Plan",
+	            "See Premium Plans"
+	        );
+
+	        // Loop through each label and verify visibility
+	        for (String label : expectedLabels) {
+	            try {
+	                // Adjust locator strategy as needed (e.g., xpath, cssSelector)
+	                WebElement element = driver.findElement(getmenu);
+	                if (element.isDisplayed()) {
+	                    System.out.println("✅ Visible: " + label);
+	                } else {
+	                    System.out.println("❌ Not visible: " + label);
+	                }
+	            } catch (Exception e) {
+	                System.out.println("❌ Not found: " + label);
+	            }
+	        }
+		}
+
 	
 	public boolean Subtitle() {
 		return driver.findElement(Subtitle).isDisplayed();
