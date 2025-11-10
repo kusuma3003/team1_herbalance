@@ -185,12 +185,12 @@ public class DashBoardPage {
 	                // Adjust locator strategy as needed (e.g., xpath, cssSelector)
 	                WebElement element = driver.findElement(getmenu);
 	                if (element.isDisplayed()) {
-	                    System.out.println("✅ Visible: " + label);
+	                    System.out.println(" Visible: " + label);
 	                } else {
-	                    System.out.println("❌ Not visible: " + label);
+	                    System.out.println(" Not visible: " + label);
 	                }
 	            } catch (Exception e) {
-	                System.out.println("❌ Not found: " + label);
+	                System.out.println(" Not found: " + label);
 	            }
 	        }
 		}
