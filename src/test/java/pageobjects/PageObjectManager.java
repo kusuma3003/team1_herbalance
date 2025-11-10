@@ -6,10 +6,8 @@ public class PageObjectManager {
 
 	public WebDriver driver;
 	public LaunchPage launchpage;
+	public DashBoardPage dashboardpage;
 	
-
-	
-
 
 	public PageObjectManager(WebDriver driver) {
 
@@ -22,6 +20,13 @@ public class PageObjectManager {
 			launchpage = new LaunchPage(driver);
 		}
 		return launchpage;
+	}
+	
+	public DashBoardPage getdashboardpage() {
+		if (dashboardpage == null) {
+			dashboardpage = new DashBoardPage(driver);
+		}
+		return dashboardpage;
 	}
 
 	
