@@ -16,8 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
- @run
-Feature: Auth Page UI Verification - sign up tab
+ 
+ Feature: Auth Page UI Verification - sign up tab
 
     Scenario: Email ID input field presence
     Given User is on the HerBalance launch page
