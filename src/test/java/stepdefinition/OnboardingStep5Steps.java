@@ -9,10 +9,13 @@ import org.testng.Assert;
 import driverfactory.DriverFactory;
 import pageobjects.OnboardingStep5Page;
 import pageobjects.OnboardingStep4Page;
+import utils.PropertyFileReader;
+import utils.TestContextSetup;
+
 
 public class OnboardingStep5Steps {
 
-    TestContextSetup context;
+	TestContextSetup context;
     DriverFactory driverFactory;
     public WebDriver driver;
 
@@ -21,9 +24,9 @@ public class OnboardingStep5Steps {
 
     public OnboardingStep5Steps(TestContextSetup context) {
 
-        this.context = context;
+    	this.context = context;
         //step 1 is upload blood work
-        step5Page = context.getpageobjectmanager().OnboardingStep5Page();
+        step5Page = context.getpageobjectmanager().getonboardingstep5page();
     }
 
     // --- Background ---
@@ -56,13 +59,12 @@ public class OnboardingStep5Steps {
     @And("clicks the {string} button")
     public void user_clicks_button(String button) {
         System.out.println("Clicked button: " + button);
-        // Add Selenium click once locator available
     }
 
     @Then("the error message {string} should be displayed")
     public void error_message_displayed(String expectedMessage) {
-        Assert.assertTrue("Expected error not found: " + expectedMessage,
-                step4Page.isErrorDisplayed(expectedMessage));
+    	 Assert.assertTrue(
+                 step4Page.isErrorDisplayed(expectedMessage));
     }
 
     // --- Navigation between Steps ---
@@ -95,7 +97,7 @@ public class OnboardingStep5Steps {
 
     @And("the progress bar should show {string}")
     public void progress_bar_shows_text(String stepText) {
-        Assert.assertTrue("Progress step missing", step5Page.isProgressTextDisplayed());
+    	Assert.assertTrue( step5Page.isProgressTextDisplayed());
     }
 
     @And("the {string} button should be visible and enabled")
@@ -117,28 +119,28 @@ public class OnboardingStep5Steps {
 
     @Then("the title should be {string}")
     public void verify_title(String expectedTitle) {
-        Assert.assertTrue("Title not displayed", step5Page.isTitleDisplayed());
+    	 Assert.assertTrue( step5Page.isTitleDisplayed());
         Assert.assertEquals(expectedTitle, step5Page.getTitleText());
     }
 
     @And("the description should display {string}")
     public void verify_description(String expectedDescription) {
-        Assert.assertTrue("Description not displayed", step5Page.isDescriptionDisplayed());
+    	 Assert.assertTrue(step5Page.isDescriptionDisplayed());
         Assert.assertEquals(expectedDescription, step5Page.getDescriptionText());
     }
 
     @Then("the question {string} should be visible")
     public void verify_question(String expectedQuestion) {
-        Assert.assertTrue("Question not displayed", step5Page.isQuestionDisplayed());
+    	Assert.assertTrue( step5Page.isQuestionDisplayed());
     }
 
     @And("{int} radio buttons should be visible")
     public void verify_radio_buttons_count(int expectedCount) {
-        Assert.assertEquals("Radio count mismatch", expectedCount, step5Page.getRadioButtonCount());
+    	Assert.assertEquals( expectedCount, step5Page.getRadioButtonCount());
     }
 
     @And("the options for menstrual cycle awareness should be displayed")
     public void verify_radio_options() {
-        Assert.assertTrue("Radio options missing", step5Page.areRadioOptionsDisplayed());
+    	 Assert.assertTrue( step5Page.areRadioOptionsDisplayed());
     }
 }

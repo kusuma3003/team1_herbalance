@@ -8,10 +8,12 @@ import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import driverfactory.DriverFactory;
 import pageobjects.OnboardingStep9Page;
+import utils.PropertyFileReader;
+import utils.TestContextSetup;
 
 public class OnboardingStep9Steps {
 
-    TestContextSetup context;
+	TestContextSetup context;
     DriverFactory driverFactory;
     public WebDriver driver;
 
@@ -19,8 +21,8 @@ public class OnboardingStep9Steps {
 
     public OnboardingStep9Steps(TestContextSetup context) {
 
-        this.context = context;
-        step9Page = context.getpageobjectmanager().OnboardingStep8Page();
+    	this.context = context;
+        step9Page = context.getpageobjectmanager().getonboardingstep9page();
     }
 
     @Given("the user has completed onboarding up to Step 7")

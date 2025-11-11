@@ -1,21 +1,30 @@
 package stepdefinition;
 
 import static org.testng.Assert.assertTrue;
-import utils.TestContextSetup;
+
 
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import driverfactory.DriverFactory;
 import pageobjects.OnboardingStep11Page;
+import utils.TestContextSetup;
+
+import utils.PropertyFileReader;
 
 public class OnboardingStep11Steps {
 
-    TestContextSetup context;
+	TestContextSetup context;
     DriverFactory driverFactory;
     public WebDriver driver;
 
     OnboardingStep11Page step11Page = new OnboardingStep11Page(driver);
+    
+    public OnboardingStep11Steps(TestContextSetup context) {
+
+        this.context = context;
+        step11Page = context.getpageobjectmanager().getonboardingstep11page();
+    }
 
     @Given("the user has completed onboarding upto Step 9")
     public void user_completed_upto_step9() {
