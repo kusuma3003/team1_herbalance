@@ -1,177 +1,223 @@
 package stepdefinition;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import org.testng.Assert;
+import org.openqa.selenium.WebDriver;
+
+import driverfactory.DriverFactory;
+import io.cucumber.java.en.*;
+import pageobjects.EditProfilePage;
+import utils.TestContextSetup;
 
 public class EditProfileSteps {
 
-	//---------------------------  Edit Your Profile-UI  --------------------------
-@Given("User is on the Her Balance Dashboard with the Edit Profile submenu expanded")
-public void user_is_on_the_her_balance_dashboard_with_the_edit_profile_submenu_expanded() {
-   
-}
+    TestContextSetup context;
+    WebDriver driver;
+    EditProfilePage editProfilePage;
 
-@When("User clicks on Edit Profile")
-public void user_clicks_on_edit_profile() {
-   
-}
+    public EditProfileSteps(TestContextSetup context) {
+        this.context = context;
+        this.driver = DriverFactory.Driver();
+        this.editProfilePage = context.getpageobjectmanager().getEditProfilePage();
+    }
 
-@Then("{string} title should be visible")
-public void title_should_be_visible(String string) {
-    
-}
 
-@Then("{string} subtitle should be visible")
-public void subtitle_should_be_visible(String string) {
-  
-}
+	    //---------------------------  Edit Profile - UI  --------------------------
 
-@Then("There should be exactly {int} tabs")
-public void there_should_be_exactly_tabs(Integer int1) {
+	    @Given("User is on the Her Balance Dashboard with the Edit Profile submenu expanded")
+	    public void user_is_on_the_her_balance_dashboard_with_the_edit_profile_submenu_expanded() {
+	        // assumed user is already logged in before reaching Edit Profile
+	        // navigate to Dashboard page if needed
+	    }
 
-}
+	    @When("User clicks on Edit Profile")
+	    public void user_clicks_on_edit_profile() {
+	        // driver.findElement or page object navigation
+	    }
 
-@Then("{string} tab should be visible")
-public void tab_should_be_visible(String string) {
- 
-}
+	    @Then("{string} title should be visible")
+	    public void title_should_be_visible(String title) {
+	        Assert.assertTrue(editProfilePage.isTitleVisible());
+	    }
 
-@Then("{string} tab should be active by default")
-public void tab_should_be_active_by_default(String string) {
+	    @Then("{string} subtitle should be visible")
+	    public void subtitle_should_be_visible(String subtitle) {
+	        Assert.assertTrue(editProfilePage.isSubtitleVisible());
+	    }
 
-}
+	    @Then("There should be exactly {int} tabs")
+	    public void there_should_be_exactly_tabs(Integer count) {
+	        Assert.assertEquals(editProfilePage.getTabCount(), count.intValue());
+	    }
 
-@Then("Back button should be visible")
-public void back_button_should_be_visible() {
-    
-}
+	    @Then("{string} tab should be visible")
+	    public void tab_should_be_visible(String tabName) {
+	        Assert.assertTrue(editProfilePage.isTabVisible(tabName));
+	    }
+
+	    @Then("{string} tab should be active by default")
+	    public void tab_should_be_active_by_default(String tabName) {
+	        Assert.assertTrue(editProfilePage.isTabActive(tabName));
+	    }
+
+	    @Then("Back button should be visible")
+	    public void back_button_should_be_visible() {
+	        Assert.assertTrue(editProfilePage.isBackBtnVisible());
+	    }
+
 
 //---------------------------  Edit Your Profile-Basic  --------------------------
 
-@When("User clicks Basic Information tab")
-public void user_clicks_basic_information_tab() {
-    
-}
+	    @When("User clicks Basic Information tab")
+	    public void user_clicks_basic_information_tab() {
+	        editProfilePage.clickBasicInformationTab();
+	    }
 
-@Then("{string} should be visible inside section")
-public void should_be_visible_inside_section(String string) {
-   
-}
+	    @Then("{string} should be visible inside section")
+	    public void should_be_visible_inside_section(String title) {
+	        Assert.assertTrue(editProfilePage.isBasicInfoSectionVisible(title));
+	    }
 
-@Then("{string} sub text should be visible")
-public void sub_text_should_be_visible(String string) {
-   
-}
+	    @Then("{string} sub text should be visible")
+	    public void sub_text_should_be_visible(String subText) {
+	        Assert.assertTrue(editProfilePage.isBasicInfoSubTextVisible(subText));
+	    }
 
-@Then("Should display the user’s Name as entered during the onboarding process.")
-public void should_display_the_user_s_name_as_entered_during_the_onboarding_process() {
-   
-}
+	    @Then("Should display the user’s Name as entered during the onboarding process.")
+	    public void should_display_the_user_s_name_as_entered_during_the_onboarding_process() {
+	        Assert.assertFalse(editProfilePage.getUserName().isEmpty());
+	    }
 
-@Then("Should display the user’s Age as entered during the onboarding process.")
-public void should_display_the_user_s_age_as_entered_during_the_onboarding_process() {
- 
-}
+	    @Then("Should display the user’s Age as entered during the onboarding process.")
+	    public void should_display_the_user_s_age_as_entered_during_the_onboarding_process() {
+	        Assert.assertFalse(editProfilePage.getUserAge().isEmpty());
+	    }
 
-@Then("Name and Age fields should be properly aligned vertically with equal spacing")
-public void name_and_age_fields_should_be_properly_aligned_vertically_with_equal_spacing() {
-   
-}
+	    @Then("Name and Age fields should be properly aligned vertically with equal spacing")
+	    public void name_and_age_fields_should_be_properly_aligned_vertically_with_equal_spacing() {
+	        Assert.assertTrue(editProfilePage.areNameAgeFieldsAligned());
+	    }
 
-@Then("“Next: Body Metrics” button should be visible, enabled")
-public void next_body_metrics_button_should_be_visible_enabled() {
+	    @Then("“Next: Body Metrics” button should be visible, enabled")
+	    public void next_body_metrics_button_should_be_visible_enabled() {
+	        Assert.assertTrue(editProfilePage.isNextBodyMetricsEnabled());
+	    }
 
-}
 
 //---------------------------  Edit Your Profile-Metrics  --------------------------
-@When("User clicks Body Metrics Tab")
-public void user_clicks_body_metrics_tab() {
+	    @When("User clicks Body Metrics Tab")
+	    public void user_clicks_body_metrics_tab() {
+	        editProfilePage.clickBodyMetricsTab();
+	    }
 
-}
 
-@Then("{string} should be visible")
-public void should_be_visible(String string) {
-   
-}
+	    @Then("{string} should be visible")
+	    public void should_be_visible(String expectedText) {
+	        Assert.assertTrue(editProfilePage.isTextVisible(expectedText));
+	    }
 
-@Then("Should display the user’s Weight as entered during the onboarding process.")
-public void should_display_the_user_s_weight_as_entered_during_the_onboarding_process() {
-   
-}
 
-@Then("Should display the user’s Height as entered during the onboarding process.")
-public void should_display_the_user_s_height_as_entered_during_the_onboarding_process() {
-  
-}
+	    @Then("Should display the user’s Weight as entered during the onboarding process.")
+	    public void should_display_the_user_s_weight_as_entered_during_the_onboarding_process() {
+	        Assert.assertFalse(editProfilePage.getUserWeight().isEmpty());
+	    }
 
-@Then("Please enter your height in decimal format \\(e.g., {int}'{double}\"={double}) should be visible")
-public void please_enter_your_height_in_decimal_format_e_g_should_be_visible(Integer int1, Double double1, Double double2) {
-  
-}
 
-@Then("\"kg\"or {string} unit values in dropdown should be visible ,enabled")
-public void kg_or_unit_values_in_dropdown_should_be_visible_enabled(String string) {
-    
-}
+	    @Then("Should display the user’s Height as entered during the onboarding process.")
+	    public void should_display_the_user_s_height_as_entered_during_the_onboarding_process() {
+	        Assert.assertFalse(editProfilePage.getUserHeight().isEmpty());
+	    }
 
-@Then("{string} or {string} unit values in dropdown should be visible, enabled")
-public void or_unit_values_in_dropdown_should_be_visible_enabled(String string, String string2) {
-    
-}
 
-@Then("Weight and Height fields should be properly aligned vertically with equal spacing")
-public void weight_and_height_fields_should_be_properly_aligned_vertically_with_equal_spacing() {
-    
-}
+	    @Then("Please enter your height in decimal format \\(e.g., {int}'{double}\"={double}) should be visible")
+	    public void please_enter_your_height_in_decimal_format_is_visible(Integer feet, Double inches, Double cm) {
+	        Assert.assertTrue(editProfilePage.isHeightFormatHintVisible());
+	    }
 
-@Then("BMI Calculation Number should be displayed with a gradient slider and labels")
-public void bmi_calculation_number_should_be_displayed_with_a_gradient_slider_and_labels() {
-    
-}
 
-@Then("BMI Category section should present with BMI Category")
-public void bmi_category_section_should_present_with_bmi_category() {
-    
-}
+	    @Then("\"kg\"or {string} unit values in dropdown should be visible ,enabled")
+	    public void kg_or_unit_values_in_dropdown_should_be_visible_enabled(String otherUnit) {
+	        Assert.assertTrue(editProfilePage.isUnitVisible("kg"));
+	        Assert.assertTrue(editProfilePage.isUnitVisible(otherUnit));
+	    }
 
-@Then("BMI Catogary note should be visible")
-public void bmi_catogary_note_should_be_visible() {
-    
-}
 
-@Then("slider should display a continuous gradient from blue → yellow → orange → red, representing increasing BMI values")
-public void slider_should_display_a_continuous_gradient_from_blue_yellow_orange_red_representing_increasing_bmi_values() {
-    
-}
+	    @Then("{string} or {string} unit values in dropdown should be visible, enabled")
+	    public void unit_values_in_dropdown_should_be_visible_enabled(String unit1, String unit2) {
+	        Assert.assertTrue(editProfilePage.isUnitVisible(unit1));
+	        Assert.assertTrue(editProfilePage.isUnitVisible(unit2));
+	    }
 
-@Then("{string} Button should be visible ,enabled")
-public void button_should_be_visible_enabled(String string) {
-    
-}
+
+	    @Then("Weight and Height fields should be properly aligned vertically with equal spacing")
+	    public void weight_and_height_fields_should_be_properly_aligned_vertically_with_equal_spacing() {
+	        Assert.assertTrue(editProfilePage.isWeightHeightAligned());
+	    }
+
+
+	    @Then("BMI Calculation Number should be displayed with a gradient slider and labels")
+	    public void bmi_calculation_number_should_be_displayed_with_a_gradient_slider_and_labels() {
+	        Assert.assertTrue(editProfilePage.isBmiNumberVisible());
+	        Assert.assertTrue(editProfilePage.isBmiSliderVisible());
+	    }
+
+
+	    @Then("BMI Category section should present with BMI Category")
+	    public void bmi_category_section_should_present_with_bmi_category() {
+	        Assert.assertTrue(editProfilePage.isBmiCategoryVisible());
+	    }
+
+
+	    @Then("BMI Catogary note should be visible")
+	    public void bmi_catogary_note_should_be_visible() {
+	        Assert.assertTrue(editProfilePage.isBmiNoteVisible());
+	    }
+
+
+	    @Then("slider should display a continuous gradient from blue → yellow → orange → red, representing increasing BMI values")
+	    public void slider_should_display_gradient() {
+	        Assert.assertTrue(editProfilePage.isBmiGradientValid(),
+	                " Slider gradient colors missing");
+	    }
+
+
+	    @Then("{string} Button should be visible ,enabled")
+	    public void button_should_be_visible_enabled(String buttonText) {
+	        Assert.assertTrue(editProfilePage.isButtonVisible(buttonText));
+	        Assert.assertTrue(editProfilePage.isButtonEnabled(buttonText));
+	    }
+
 
 //---------------------------  Edit Your Profile-Preferences  --------------------------
 
 
-@When("User clicks Preferences & Health Tab")
-public void user_clicks_preferences_health_tab() {
-    
-}
+	    @When("User clicks Preferences & Health Tab")
+	    public void user_clicks_preferences_health_tab() {
+	        editProfilePage.clickPreferencesHealthTab();
+	    }
 
-@Then("The following RadioButtons should be visible and enabled:")
-public void the_following_radio_buttons_should_be_visible_and_enabled(io.cucumber.datatable.DataTable dataTable) {
-    
-}
 
-@Then("{string} button should be visible and enabled")
-public void button_should_be_visible_and_enabled(String string) {
-   
-}
+	    @Then("The following RadioButtons should be visible and enabled:")
+	    public void the_following_radio_buttons_should_be_visible_and_enabled(io.cucumber.datatable.DataTable dataTable) {
 
-@Then("{string} information text should be visible")
-public void information_text_should_be_visible(String string) {
-  
-}
+	        for (String option : dataTable.asList()) {
+	            Assert.assertTrue(editProfilePage.isRadioVisible(option));
+	            Assert.assertTrue(editProfilePage.isRadioEnabled(option));
+	        }
+	    }
+
+
+	    @Then("{string} button should be visible and enabled")
+	    public void button_should_be_visible_and_enabled(String buttonText) {
+	        Assert.assertTrue(editProfilePage.isButtonVisible(buttonText));
+	        Assert.assertTrue(editProfilePage.isButtonEnabled(buttonText));
+	    }
+
+
+	    @Then("{string} information text should be visible")
+	    public void information_text_should_be_visible(String text) {
+	        Assert.assertTrue(editProfilePage.isInfoTextVisible(text));
+	    }
+
 
 //---------------------------  Edit Your Profile-func  --------------------------
 

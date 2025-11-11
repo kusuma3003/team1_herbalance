@@ -8,7 +8,7 @@ public class PageObjectManager {
 	public LaunchPage launchpage;
 	public DashBoardPage dashboardpage;
 	public LoginPage loginpage;
-	
+	EditProfilePage editProfilePage;
 
 	public PageObjectManager(WebDriver driver) {
 
@@ -38,5 +38,13 @@ public class PageObjectManager {
 		return loginpage;
 	}
 	
+
+	public EditProfilePage getEditProfilePage() {
+	    if (editProfilePage == null) {
+	        editProfilePage = new EditProfilePage(driver);
+	    }
+	    return editProfilePage;
+	}
+
 
 }
