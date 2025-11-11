@@ -6,6 +6,8 @@ public class PageObjectManager {
 
 	public WebDriver driver;
 	public LaunchPage launchpage;
+	public DashBoardPage dashboardpage;
+	public LoginPage loginpage;
 	
 	public OnboardingStep1Page onboardingstep1page;
 	public OnboardingStep3Page onboardingstep3page;
@@ -19,9 +21,6 @@ public class PageObjectManager {
 	public OnboardingStep11Page onboardingstep11page;
 	
 
-	
-
-
 	public PageObjectManager(WebDriver driver) {
 
 		this.driver = driver;
@@ -33,11 +32,7 @@ public class PageObjectManager {
 			launchpage = new LaunchPage(driver);
 		}
 		return launchpage;
-	}
-	
-	
-	
-	
+	}	
 	
 	public OnboardingStep1Page getonboardingstep1page() {
 		if (onboardingstep1page == null) {
@@ -117,8 +112,21 @@ public class PageObjectManager {
 		return onboardingstep11page;
 	}
 
-	
+	public DashBoardPage getdashboardpage() {
+		if (dashboardpage == null) {
+			dashboardpage = new DashBoardPage(driver);
+		}
+		return dashboardpage;
 
+	}
+
+	
+	public LoginPage getloginpage() {
+		if (launchpage == null) {
+			launchpage = new LaunchPage(driver);
+		}
+		return loginpage;
+	}
 	
 
 }

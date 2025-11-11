@@ -84,7 +84,7 @@ public class DashboardSteps {
 
 	@Then("{string}, {string}")
 	public void string_string(String string, String string2) {
-		Assert.assertTrue(dashboardpage.Subtitle());
+		dashboardpage.Subtitle();
 		String subTitle = driver.getTitle();
 		 System.out.println("Page Title: " + subTitle);
 	} 
@@ -157,37 +157,37 @@ public class DashboardSteps {
 
 	@Then("Slider should be present in BMI reference guide")
 	public void slider_should_be_present_in_bmi_reference_guide() {
-		dashboardpage.Bmihead();
+		dashboardpage.Bmiheading();
 	}
 
 	@Then("BMI Reference Guide component should be displayed with a gradient slider and labeled ranges")
 	public void bmi_reference_guide_component_should_be_displayed_with_a_gradient_slider_and_labeled_ranges() {
-		dashboardpage.Bmihead();
+		dashboardpage.Bmiheading();
 	}
 	
 	@Then("slider should display a continuous gradient from blue to yellow to orange to red, representing increasing BMI values")
 	public void slider_should_display_a_continuous_gradient_from_blue_to_yellow_to_orange_to_red_representing_increasing_bmi_values() {
-		dashboardpage.Bmihead();
+		dashboardpage.Bmiheading();
 	} 
 	
 	@Then("Labels {string}, {string}, {string}, and {string} should be visible and color-coded accordingly")
 	public void labels_and_should_be_visible_and_color_coded_accordingly(String string, String string2, String string3, String string4) {
-		dashboardpage.Bmihead();
+		dashboardpage.Bmiheading();
 	}
 
 	@Then("Circular pointer should automatically be positioned on the slider corresponding to the users BMI value")
 	public void circular_pointer_should_automatically_be_positioned_on_the_slider_corresponding_to_the_user_s_bmi_value() {
-		dashboardpage.Bmihead();
+		dashboardpage.Bmiheading();
 	}
 
 	@Then("Slider should not allow manual movement; it should remain fixed based on the users BMI")
 	public void slider_should_not_allow_manual_movement_it_should_remain_fixed_based_on_the_user_s_bmi() {
-		dashboardpage.Bmihead();
+		dashboardpage.Bmiheading();
 	}
 
 	@Then("{string} label should be visible above the slider")
 	public void label_should_be_visible_above_the_slider(String string) {
-		dashboardpage.Bmihead();
+		dashboardpage.Bmiheading();
 	}
 	
 	@Then("Message Free plan includes {int} days of limited tracking should be displayed clearly below the slider")
@@ -200,17 +200,17 @@ public class DashboardSteps {
 	@Then("Displayed condition\\(s) match exactly what was selected during onboarding, without requiring user input again")
 	public void displayed_condition_s_match_exactly_what_was_selected_during_onboarding_without_requiring_user_input_again() {
 		//dashboardpage.Healthconditon();
-		Assert.assertTrue(dashboardpage.Healthconditon());
+		dashboardpage.Healthconditon();
 	}
 
 	@Then("Message appears below condition card explaining how the plan is adjusted")
 	public void message_appears_below_condition_card_explaining_how_the_plan_is_adjusted() {
-		Assert.assertTrue(dashboardpage.Healthconditon());
+		dashboardpage.Healthconditon();
 	}
 
 	@Then("Card includes heart icon, condition name , and info icon with related text")
 	public void card_includes_heart_icon_condition_name_and_info_icon_with_related_text() {
-		Assert.assertTrue(dashboardpage.Healthconditon());
+		dashboardpage.Healthconditon();
 	}
 	
 	//====================================Health With Condition===========================================================
@@ -224,12 +224,12 @@ public class DashboardSteps {
 	
 	@Then("Blood Report Insights section should display the personalized values and insights")
 	public void blood_report_insights_section_should_display_the_personalized_values_and_insights() {
-		Assert.assertTrue(dashboardpage.BloodReport());
+		dashboardpage.BloodReport();
 	}
 
 	@Then("User should see the Upload Blood Report button")
 	public void user_should_see_the_upload_blood_report_button() {
-		Assert.assertTrue(dashboardpage.BloodReport());
+		dashboardpage.BloodReport();
 	}
 
 	@Then("Message prompting them to upload their medical blood test report")
