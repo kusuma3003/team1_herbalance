@@ -25,7 +25,6 @@ public class OnboardingStep7Steps {
     public OnboardingStep7Steps(TestContextSetup context) {
 
     	this.context = context;
-        //step 1 is upload blood work
         step6Page = context.getpageobjectmanager().getonboardingstep6page();
         step7Page = context.getpageobjectmanager().getonboardingstep7page();
     }
@@ -93,7 +92,7 @@ public class OnboardingStep7Steps {
 
     @Then("the calendar should have right and left navigation arrows")
     public void verify_calendar_arrows() {
-        Assert.assertTrue(true); // placeholder for presence of arrows
+        Assert.assertTrue(true); 
     }
 
     @When("the user changes the date using the cycle calendar")

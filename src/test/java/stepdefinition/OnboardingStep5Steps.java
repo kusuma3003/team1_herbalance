@@ -25,7 +25,6 @@ public class OnboardingStep5Steps {
     public OnboardingStep5Steps(TestContextSetup context) {
 
     	this.context = context;
-        //step 1 is upload blood work
         step5Page = context.getpageobjectmanager().getonboardingstep5page();
     }
 

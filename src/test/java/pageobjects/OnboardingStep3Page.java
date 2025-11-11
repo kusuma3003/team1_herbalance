@@ -16,7 +16,7 @@ public class OnboardingStep3Page {
         this.driver = driver;
     }
 
-    // ✅ Locators (replace with actual locators later)
+    // ✅ Locators 
     private By backButton = By.xpath("//button[contains(text(),'Back')]");
     private By continueButton = By.xpath("//button[contains(text(),'Continue')]");
     private By header = By.xpath("//h1[contains(text(),'Health condition')]");

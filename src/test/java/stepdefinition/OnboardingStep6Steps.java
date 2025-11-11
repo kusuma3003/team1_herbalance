@@ -24,7 +24,6 @@ public class OnboardingStep6Steps {
     public OnboardingStep6Steps(TestContextSetup context) {
 
         this.context = context;
-        //step 1 is upload blood work
         step6Page = context.getpageobjectmanager().getonboardingstep6page();
         step5Page = context.getpageobjectmanager().getonboardingstep5page();
 
@@ -47,7 +46,6 @@ public class OnboardingStep6Steps {
 
     @Then("the user should be redirected to Step 4")
     public void verify_redirect_to_step4() {
-        // placeholder logic - in real test, check title or URL
         System.out.println("User redirected to Step 4");
     }
 

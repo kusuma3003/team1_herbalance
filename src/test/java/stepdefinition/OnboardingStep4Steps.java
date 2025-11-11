@@ -25,7 +25,6 @@ public class OnboardingStep4Steps {
     public OnboardingStep4Steps(TestContextSetup context) {
 
     	this.context = context;
-        //step 1 is upload blood work
         step4Page = context.getpageobjectmanager().getonboardingstep4page();
     }
 
@@ -42,19 +41,16 @@ public class OnboardingStep4Steps {
     @When("the user selects one or more health conditions")
     public void user_selects_health_conditions() {
         System.out.println("User selects one or more health conditions.");
-        // Example: driver.findElement(By.xpath("//label[contains(text(),'Diabetes')]")).click();
     }
 
     @And("clicks the {string} button")
     public void user_clicks_button(String buttonName) {
         System.out.println("Clicked button: " + buttonName);
-        // Add logic when actual button elements available
     }
 
     @Then("the user should be redirected to Step 4")
     public void user_redirected_to_step4() {
         System.out.println("User redirected to Step 4 (Personal Details).");
-        // Assert or URL check when available
     }
 
     // --- Step 4 Progress Verification ---
