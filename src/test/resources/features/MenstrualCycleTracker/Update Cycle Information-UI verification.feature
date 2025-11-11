@@ -16,6 +16,8 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
+
+
 Feature: Update Cycle- UI Verification
 
 Background: User clicks "Menstrual Phase Logs" from "Activity Insights" menu
@@ -34,6 +36,30 @@ Scenario: Navigation of Update Cycle Information button
     Given User is on Menstrual Cycle Tracker page
     When User clicks on Update Cycle Information button
     Then "Update your last period start date and typical cycle length" is displayed
+    
+    Scenario: 2 sections are visible
+    Given User is on Menstrual Cycle Tracker page
+    When User clicks on Update Cycle Information button
+    Then 2 sections should be visible 
+    
+    Scenario: Sections heading text
+    Given User is on Menstrual Cycle Tracker page
+    When User clicks on Update Cycle Information button
+    Then "Last Period Start Date", "Cycle Length (days)" should be displayed  
+    
+    Scenario: Cancel button is visible
+    Given User is on Menstrual Cycle Tracker page
+    When User clicks on Update Cycle Information button
+    Then "Cancel" button should be visible
+    
+    Scenario: Save Changes button is visible
+    Given User is on Menstrual Cycle Tracker page
+    When User clicks on Update Cycle Information button
+    Then "Save Changes" button should be visible
+    
+    
+    
+    
     
     
    

@@ -130,7 +130,7 @@ public class SignUpSteps {
 	@Then("Radio button for Terms and condition is present")
 	public void radio_button_for_terms_and_condition_is_present() {
 		logger.info("Verifying presence of Terms and Conditions acceptance radio button...");
-		Assert.assertTrue(signuppage.verifyTermsAndConditionRadioButton(),
+		Assert.assertTrue(signuppage.verifyTermsandConditionRadioButton(),
 				"Terms and Conditions radio button not present");
 		logger.info("Terms and Conditions radio button is present.");
 	}

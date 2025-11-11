@@ -1,8 +1,7 @@
-@run
+
 Feature: Recommended Activities, Nutrition, and Next Period UI Verification
 
-Background: 
-    Given User clicks the Activity Insights button after logging in
+Background: User clicks the Activity Insights button after logging in
 
 # Recommended Activities Section
 Scenario: Recommended Activities Section heading

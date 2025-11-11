@@ -14,7 +14,7 @@ public class SignUpPage {
 
     private WebDriver driver;
 
-    // Locators
+  
     private By signUp = By.xpath("//*[contains(text(),'Sign up')]");
     private By signUpTab = By.xpath("//*[contains(text(),'SignUp')]");
     private By emailID = By.id("email");  // Prefer stable locators like id or name
@@ -32,6 +32,8 @@ public class SignUpPage {
     private By eyeIconPassword = By.id("IconPassword");
     private By eyeIconConfirmPassword = By.id("IconConfirmPassword");
 
+	
+
     public SignUpPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -39,7 +41,7 @@ public class SignUpPage {
     // ========================= Actions ========================= //
 
     public void LaunchPage() {
-        String baseUrl = ConfigReader.get("baseUrl");
+        String baseUrl = ConfigReader.get("launchurl");
         logger.info("Launching HerBalance URL: {}", baseUrl);
         driver.get(baseUrl);
     }
