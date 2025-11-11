@@ -1,14 +1,17 @@
 package stepdefinition;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
 import driverfactory.DriverFactory;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pageobjects.OnboardingStep1Page;
+import utils.PropertyFileReader;
+import utils.TestContextSetup;
 
-public class OnboardingStep1Steps<TestContextSetup> {
+public class OnboardingStep1Steps {
 
     TestContextSetup context;
     DriverFactory driverFactory;
@@ -21,18 +24,13 @@ public class OnboardingStep1Steps<TestContextSetup> {
 
         this.context = context;
         //step 1 is upload blood work
-        uploadPage = context.getpageobjectmanager().OnboardingStep1Page();
+        uploadPage = context.getpageobjectmanager().getonboardingstep1page();
     }
 
     @Given("the user is on the Sign Up page")
-    public void user_is_on_sign_up_page() {
+    public void user_is_on_sign_up_page() throws Throwable {
         // Navigate to signup page (placeholder)
-        driverFactory.openPage(PropertyFileReader.getUrl());
-    }
-
-    @And("has entered valid registration details")
-    public void user_enters_valid_registration_details() {
-        // code to enter registration details
+    	driverFactory.openPage(PropertyFileReader.getUrl());
     }
 
     @When("the user clicks the {string} button")

@@ -3,6 +3,8 @@ package pageobjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert.ThrowingRunnable;
+
 import java.util.List;
 
 public class OnboardingStep3Page {
@@ -14,7 +16,7 @@ public class OnboardingStep3Page {
         this.driver = driver;
     }
 
-    // ✅ Locators (replace with actual locators later)
+    // ✅ Locators 
     private By backButton = By.xpath("//button[contains(text(),'Back')]");
     private By continueButton = By.xpath("//button[contains(text(),'Continue')]");
     private By header = By.xpath("//h1[contains(text(),'Health condition')]");
@@ -41,7 +43,8 @@ public class OnboardingStep3Page {
     public boolean isContinueButtonEnabled() {
         return driver.findElement(continueButton).isEnabled();
     }
-
+    
+   
     // --- Header/Subtitles ---
     public boolean isHeaderDisplayed() {
         return driver.findElement(header).isDisplayed();
@@ -88,4 +91,9 @@ public class OnboardingStep3Page {
     public boolean isInformationalNoteDisplayed() {
         return driver.findElement(informationalNote).isDisplayed();
     }
+
+	public void clickContinueWithoutReportButton() {
+		driver.findElement(continueButton).click();
+		
+	}
 }

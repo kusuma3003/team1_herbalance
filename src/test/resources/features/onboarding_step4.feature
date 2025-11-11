@@ -27,10 +27,7 @@ Feature: Onboarding Step 3 Functionality and Step 4 UI Verification
   Scenario: Verify input fields on Step 4
     When the user navigates to Step 4
     Then 2 input boxes should be visible
-    And the field labels should be:
-       What’s your first name?,
-       What’s your age?,
-       What best describes your blood pressure status?
+    And the field labels should be: What’s your first name?, What’s your age?, What best describes your blood pressure status?
     And helper text should be displayed under each field
 
   Scenario: Verify radio buttons on Step 4

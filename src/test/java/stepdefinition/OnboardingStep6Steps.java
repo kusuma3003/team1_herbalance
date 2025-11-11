@@ -1,7 +1,6 @@
 package stepdefinition;
 
 import static org.testng.Assert.assertTrue;
-import utils.TestContextSetup;
 
 import io.cucumber.java.en.*;
 import org.openqa.selenium.WebDriver;
@@ -9,10 +8,13 @@ import org.testng.Assert;
 import driverfactory.DriverFactory;
 import pageobjects.OnboardingStep6Page;
 import pageobjects.OnboardingStep5Page;
+import utils.PropertyFileReader;
+import utils.TestContextSetup;
+
 
 public class OnboardingStep6Steps {
 
-    TestContextSetup context;
+	TestContextSetup context;
     DriverFactory driverFactory;
     public WebDriver driver;
 
@@ -22,9 +24,8 @@ public class OnboardingStep6Steps {
     public OnboardingStep6Steps(TestContextSetup context) {
 
         this.context = context;
-        //step 1 is upload blood work
-        step6Page = context.getpageobjectmanager().OnboardingStep6Page();
-        step5Page = context.getpageobjectmanager().OnboardingStep5Page();
+        step6Page = context.getpageobjectmanager().getonboardingstep6page();
+        step5Page = context.getpageobjectmanager().getonboardingstep5page();
 
     }
 
@@ -35,7 +36,7 @@ public class OnboardingStep6Steps {
 
     @Then("the error message {string} should be displayed")
     public void verify_error_message(String expectedMsg) {
-        Assert.assertTrue("Error not displayed", step5Page.isErrorDisplayed());
+    	 Assert.assertTrue( step5Page.isErrorDisplayed());
     }
 
     @When("the user clicks the Back button in Step 5")
@@ -45,7 +46,6 @@ public class OnboardingStep6Steps {
 
     @Then("the user should be redirected to Step 4")
     public void verify_redirect_to_step4() {
-        // placeholder logic - in real test, check title or URL
         System.out.println("User redirected to Step 4");
     }
 

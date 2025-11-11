@@ -4,7 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
 
 public class OnboardingStep8Page {
 
@@ -64,9 +65,10 @@ public class OnboardingStep8Page {
     }
 
     public String getErrorMessage() {
-        WebElement el;
+        WebElement el = null;
 		try {
-			el = (WebElement) Wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage));
+			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			el =  wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
