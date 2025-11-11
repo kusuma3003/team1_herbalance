@@ -145,4 +145,12 @@ public class PageObjectManager {
 	}
 	
 
+	public EditProfilePage getEditProfilePage() {
+	    if (editProfilePage == null) {
+	        editProfilePage = new EditProfilePage(driver);
+	    }
+	    return editProfilePage;
+	}
+
+
 }
