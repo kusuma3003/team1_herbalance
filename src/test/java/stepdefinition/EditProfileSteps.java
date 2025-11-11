@@ -1,4 +1,4 @@
-package stepdefinition;
+/*package stepdefinition;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -64,12 +64,12 @@ public void sub_text_should_be_visible(String string) {
    
 }
 
-@Then("Should display the user’s Name as entered during the onboarding process.")
+@Then("Should display the userâ€™s Name as entered during the onboarding process.")
 public void should_display_the_user_s_name_as_entered_during_the_onboarding_process() {
    
 }
 
-@Then("Should display the user’s Age as entered during the onboarding process.")
+@Then("Should display the userâ€™s Age as entered during the onboarding process.")
 public void should_display_the_user_s_age_as_entered_during_the_onboarding_process() {
  
 }
@@ -79,7 +79,7 @@ public void name_and_age_fields_should_be_properly_aligned_vertically_with_equal
    
 }
 
-@Then("“Next: Body Metrics” button should be visible, enabled")
+@Then("â€œNext: Body Metricsâ€� button should be visible, enabled")
 public void next_body_metrics_button_should_be_visible_enabled() {
 
 }
@@ -95,12 +95,12 @@ public void should_be_visible(String string) {
    
 }
 
-@Then("Should display the user’s Weight as entered during the onboarding process.")
+@Then("Should display the userâ€™s Weight as entered during the onboarding process.")
 public void should_display_the_user_s_weight_as_entered_during_the_onboarding_process() {
    
 }
 
-@Then("Should display the user’s Height as entered during the onboarding process.")
+@Then("Should display the userâ€™s Height as entered during the onboarding process.")
 public void should_display_the_user_s_height_as_entered_during_the_onboarding_process() {
   
 }
@@ -140,7 +140,7 @@ public void bmi_catogary_note_should_be_visible() {
     
 }
 
-@Then("slider should display a continuous gradient from blue → yellow → orange → red, representing increasing BMI values")
+@Then("slider should display a continuous gradient from blue â†’ yellow â†’ orange â†’ red, representing increasing BMI values")
 public void slider_should_display_a_continuous_gradient_from_blue_yellow_orange_red_representing_increasing_bmi_values() {
     
 }
@@ -308,4 +308,4 @@ public void user_should_navigate_back_to_preferences_and_health_section_page() {
     // Verify return to page
 }
 
-}
+}*/
