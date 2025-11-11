@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="BasicSuite">
+
+
+<!--<listeners>
+    <listener class-name="listeners.RetryListener"/>
+    <listener class-name="listeners.TestListener"/>
+    <listener class-name="path.to.AllureListener"/>
+</listeners>-->
+
+  
+	<test name="PageTestsExecution">
+	 
+	<classes>
+		
+		<class name="tests.ArrayTests" /> 
+		
+
+ 	</classes>
+
+	</test>
+
+</suite>

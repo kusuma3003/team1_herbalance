@@ -261,7 +261,38 @@ public boolean isButtonEnabled(String buttonText) {
         return false;
     }
 }
+//---------------------------  Edit Your Profile-Preferences  --------------------------
 
+By preferencesHealthTab = By.xpath("//div[contains(text(),'Preferences & Health')]");
+
+public void clickPreferencesHealthTab() {
+    driver.findElement(preferencesHealthTab).click();
+}
+public boolean isRadioVisible(String label) {
+    try {
+        By locator = By.xpath("//label[contains(text(),'" + label + "')]/input[@type='radio']");
+        return driver.findElement(locator).isDisplayed();
+    } catch (Exception e) {
+        return false;
+    }
+}
+
+public boolean isRadioEnabled(String label) {
+    try {
+        By locator = By.xpath("//label[contains(text(),'" + label + "')]/input[@type='radio']");
+        return driver.findElement(locator).isEnabled();
+    } catch (Exception e) {
+        return false;
+    }
+}
+public boolean isInfoTextVisible(String text) {
+    try {
+        By locator = By.xpath("//*[contains(text(),'" + text + "')]");
+        return driver.findElement(locator).isDisplayed();
+    } catch (Exception e) {
+        return false;
+    }
+}
 
 
 }
