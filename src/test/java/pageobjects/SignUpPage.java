@@ -1,251 +1,246 @@
-
 package pageobjects;
-import java.time.Duration;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import java.util.List;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import driverfactory.DriverFactory;
 import utils.ConfigReader;
 
 public class SignUpPage {
-	
-	WebDriver driver;
-	WebElement emailField;
-	WebElement passwordField;
-	WebElement confirmPasswordField;
-	WebElement showPasswordRadio;
-	WebElement termsElement;
-	WebElement registerbutton;
-	int emailY ;
-    int passwordY;
-    int confirmPasswordY;
-	 
 
-	By signUp = By.xpath("//*[contains(text(),'Sign up')]");
-	By signUptab = By.xpath("//*[contains(text(), 'signup')]");
-	By emailID = By.xpath("//*[contains(text(), 'emailid')]");
-	By password = By.xpath("//*[text()='password']");
-	By confirmPassword=By.xpath("//*[@class='confirmpassword']");
-	By loginButton=By.xpath("//*[@class='login']");
-	By registerButton=By.xpath("//*[contains(text(),'Register')]"); 
-	By showpasswordRadioButton = By.xpath("//*[@href='show password']");
-	By termsRadioButton = By.xpath("//*[@href='terms and conditions']");
-	By inputFields=By.cssSelector("contains input");
-	By logInLink = By.xpath("//*[@href='logIn']");
-	By showPasswordRadioButton =By.id("showPassword");
-	By showTermsandConditionRadioButton =By.xpath("//*[contains(text(),'show TermsandCondition')]");
-	By TermsandConditions=By.xpath("//*[contains(text(),'Terms and Conditions')]");
-	By Body=By.tagName("body");
-	By errorMessage =By.cssSelector(".error-message");
-	By eyeIconPassword =By.id("IconPassword");
-	By eyeIconConfirmPassword =By.id("IconConfirmPassword");
-	
-	public SignUpPage(WebDriver driver) {
+    private static final Logger logger = LoggerFactory.getLogger(SignUpPage.class);
+
+    private WebDriver driver;
+
+    // Locators
+    private By signUp = By.xpath("//*[contains(text(),'Sign up')]");
+    private By signUpTab = By.xpath("//*[contains(text(),'SignUp')]");
+    private By emailID = By.id("email");  // Prefer stable locators like id or name
+    private By password = By.id("password");
+    private By confirmPassword = By.id("confirmPassword");
+    private By loginButton = By.id("loginButton");
+    private By registerButton = By.xpath("//*[contains(text(),'Register')]");
+    private By showPasswordRadioButton = By.id("showPassword");
+    private By termsRadioButton = By.id("acceptTerms");
+    private By inputFields = By.cssSelector("input");
+    private By loginLink = By.xpath("//a[contains(text(),'Login')]");
+    private By termsAndConditions = By.xpath("//*[contains(text(),'Terms and Conditions')]");
+    private By body = By.tagName("body");
+    private By errorMessage = By.cssSelector(".error-message");
+    private By eyeIconPassword = By.id("IconPassword");
+    private By eyeIconConfirmPassword = By.id("IconConfirmPassword");
+
+    public SignUpPage(WebDriver driver) {
         this.driver = driver;
     }
-	
-	public void LaunchPage() {
-		String baseUrl = ConfigReader.get("baseUrl"); 
+
+    // ========================= Actions ========================= //
+
+    public void LaunchPage() {
+        String baseUrl = ConfigReader.get("baseUrl");
+        logger.info("Launching HerBalance URL: {}", baseUrl);
         driver.get(baseUrl);
-        	
-	}
-	public void clickSignUpButton() {
-		driver.findElement(signUp).click();
-	}
-	public void clickSignUpTab() {
-		driver.findElement(signUptab).click();
-	}
-	public boolean isEmailIdDisplayed() {
-        WebElement emailField = driver.findElement(emailID);
-        return emailField.isDisplayed();
     }
 
-	 public String getEmailIdPlaceholder_text() {
-	        return emailField.getDomAttribute("placeholder");
-	    }
-	 public boolean isPasswordDisplayed() {
-	        WebElement passwordField = driver.findElement(password);
-	        return passwordField.isDisplayed();
-	    }
+    public void clickSignUpButton() {
+        logger.info("Clicking 'Sign Up' button");
+        driver.findElement(signUp).click();
+    }
 
-	    public boolean isPasswordMasked() {
-	        
-	        String fieldType = passwordField.getDomAttribute("type"); 
-	        return fieldType.equalsIgnoreCase("password");
-	    }
-	 
-		
-	    public boolean isConfirmPasswordDisplayed() {
-	    	WebElement confirmPasswordField= driver.findElement(confirmPassword);
-	        return confirmPasswordField.isDisplayed();
-	    }
+    public void clickSignUpTab() {
+        logger.info("Clicking 'Sign Up' tab");
+        driver.findElement(signUpTab).click();
+    }
 
-	    public boolean isConfirmPasswordMasked() {
+    // ========================= Element Checks ========================= //
 
-	        String fieldType = confirmPasswordField.getDomAttribute("type"); 
-	        return fieldType.equalsIgnoreCase("confirm password");
-	    }
-	    public boolean isLoginButtonEnabled() {
-	        WebElement btn = driver.findElement(loginButton);
-	        return btn.isEnabled();
-	    }
-	    public boolean isLoginLinkVisible() {
-	        WebElement link = driver.findElement(logInLink);
-	        return link.isDisplayed();
-	    }
-	    public void clickLoginLink() {
-	        driver.findElement(logInLink).click();
-	    }
+    public boolean isEmailIdDisplayed() {
+        logger.info("Checking if Email field is displayed");
+        return driver.findElement(emailID).isDisplayed();
+    }
 
-	    public boolean isOnLoginPage() {
-	        String currentUrl = driver.getTitle();
-	        return  driver.getTitle().contains("Login");
-	    }
-	    public boolean isAligned() {
-	    
-	    int emailY = emailField.getLocation().getY();
-	    int passwordY =passwordField .getLocation().getY();
-	    int confirmPasswordY = confirmPasswordField.getLocation().getY();
+    public String getEmailIdPlaceholder_text() {
+        String placeholder = driver.findElement(emailID).getDomAttribute("placeholder");
+        logger.debug("Email placeholder text: {}", placeholder);
+        return placeholder;
+    }
 
-	    int emailX = emailField.getLocation().getX();
-	    int passwordX = passwordField.getLocation().getX();
-	    int confirmPasswordX = confirmPasswordField.getLocation().getX();
-	    boolean isVerticallyAligned = (emailX == passwordX) && (passwordX == confirmPasswordX);
-        return isVerticallyAligned;
-	    }
-        
-        public boolean isSpaced() {
-        	int spacing1 = passwordY - emailY;
-     	    int spacing2 = confirmPasswordY - passwordY;
-     	    boolean isSpacingEqual = (spacing1 == spacing2);
-			return isSpacingEqual;
+    public boolean isPasswordDisplayed() {
+        logger.info("Checking if Password field is displayed");
+        return driver.findElement(password).isDisplayed();
+    }
+
+    public boolean isPasswordMasked() {
+        String type = driver.findElement(password).getDomAttribute("type");
+        logger.debug("Password field type: {}", type);
+        return type.equalsIgnoreCase("password");
+    }
+
+    public boolean isConfirmPasswordDisplayed() {
+        logger.info("Checking if Confirm Password field is displayed");
+        return driver.findElement(confirmPassword).isDisplayed();
+    }
+
+    public boolean isConfirmPasswordMasked() {
+        String type = driver.findElement(confirmPassword).getDomAttribute("type");
+        logger.debug("Confirm Password field type: {}", type);
+        return type.equalsIgnoreCase("password");
+    }
+
+    public boolean isLoginButtonEnabled() {
+        logger.info("Checking if Login button is enabled");
+        return driver.findElement(loginButton).isEnabled();
+    }
+
+    public boolean isLoginLinkVisible() {
+        logger.info("Checking if Login link is visible");
+        return driver.findElement(loginLink).isDisplayed();
+    }
+
+    public void clickLoginLink() {
+        logger.info("Clicking Login link");
+        driver.findElement(loginLink).click();
+    }
+
+    public boolean isOnLoginPage() {
+        String title = driver.getTitle();
+        logger.info("Current page title: {}", title);
+        return title != null && title.toLowerCase().contains("login");
+    }
+
+    // ========================= Layout Checks ========================= //
+
+    public boolean isAligned() {
+        WebElement email = driver.findElement(emailID);
+        WebElement pwd = driver.findElement(password);
+        WebElement confirm = driver.findElement(confirmPassword);
+
+        int emailX = email.getLocation().getX();
+        int pwdX = pwd.getLocation().getX();
+        int confirmX = confirm.getLocation().getX();
+
+        boolean aligned = (emailX == pwdX) && (pwdX == confirmX);
+        logger.debug("Alignment check result: {}", aligned);
+        return aligned;
+    }
+
+    public boolean isSpaced() {
+        WebElement email = driver.findElement(emailID);
+        WebElement pwd = driver.findElement(password);
+        WebElement confirm = driver.findElement(confirmPassword);
+
+        int spacing1 = pwd.getLocation().getY() - email.getLocation().getY();
+        int spacing2 = confirm.getLocation().getY() - pwd.getLocation().getY();
+
+        boolean equallySpaced = spacing1 == spacing2;
+        logger.debug("Spacing check result: {}", equallySpaced);
+        return equallySpaced;
+    }
+
+    public boolean verifyingInputFields() {
+        List<WebElement> fields = driver.findElements(inputFields);
+        logger.info("Found {} input fields on page", fields.size());
+        return fields.size() == 3;
+    }
+
+    public boolean verifyShowPasswordRadioButton() {
+        WebElement showPwd = driver.findElement(showPasswordRadioButton);
+        String type = showPwd.getDomAttribute("type");
+        boolean result = showPwd.isDisplayed() && type.equalsIgnoreCase("radio");
+        logger.info("Show Password radio visible: {}", result);
+        return result;
+    }
+
+    public boolean verifyTermsAndConditionsPresent() {
+        boolean visible = driver.findElement(termsAndConditions).isDisplayed();
+        logger.info("Terms and Conditions visible: {}", visible);
+        return visible;
+    }
+
+    public boolean verifyTermsandConditionRadioButton() {
+        WebElement termsRadio = driver.findElement(termsRadioButton);
+        String type = termsRadio.getDomAttribute("type");
+        boolean result = termsRadio.isDisplayed() && type.equalsIgnoreCase("radio");
+        logger.info("Terms and Conditions radio visible: {}", result);
+        return result;
+    }
+
+    public boolean verifyTheme() {
+        WebElement pageBody = driver.findElement(body);
+        String bg = pageBody.getCssValue("background");
+        String font = pageBody.getCssValue("font-family");
+
+        boolean isPurpleTheme = bg.contains("rgb(230,230,250)") || bg.toLowerCase().contains("purple");
+        boolean isFontCorrect = font.contains("Poppins") || font.contains("Open Sans");
+
+        logger.info("Theme validation -> Background: {}, Font: {}", bg, font);
+        return isPurpleTheme && isFontCorrect;
+    }
+
+    // ========================= Actions for SignUp ========================= //
+
+    public void registerUser(String email, String pwd, String confirmPwd) {
+        logger.info("Registering user with email: {}", email);
+        driver.findElement(emailID).clear();
+        driver.findElement(password).clear();
+        driver.findElement(confirmPassword).clear();
+
+        driver.findElement(emailID).sendKeys(email);
+        driver.findElement(password).sendKeys(pwd);
+        driver.findElement(confirmPassword).sendKeys(confirmPwd);
+        driver.findElement(showPasswordRadioButton).click();
+        driver.findElement(termsRadioButton).click();
+        driver.findElement(registerButton).click();
+    }
+
+    public void registerUserwithoutclickingTerms(String email, String pwd, String confirmPwd) {
+        logger.info("Registering user without accepting Terms: {}", email);
+        driver.findElement(emailID).clear();
+        driver.findElement(password).clear();
+        driver.findElement(confirmPassword).clear();
+
+        driver.findElement(emailID).sendKeys(email);
+        driver.findElement(password).sendKeys(pwd);
+        driver.findElement(confirmPassword).sendKeys(confirmPwd);
+        driver.findElement(showPasswordRadioButton).click();
+        driver.findElement(registerButton).click();
+    }
+
+    public String verifyResult(String expectedOutput) {
+        logger.info("Verifying result against expected output: {}", expectedOutput);
+        if (expectedOutput.equalsIgnoreCase("onboarding")) {
+            String url = driver.getCurrentUrl();
+            logger.debug("Current URL: {}", url);
+            return url.contains("onboarding") ? "onboarding" : "redirect_failed";
+        } else {
+            WebElement error = driver.findElement(errorMessage);
+            String actual = error.getText().trim();
+            logger.debug("Error message displayed: {}", actual);
+            return actual;
         }
-        public boolean verifyingInputFields() {
-      
-            List<WebElement> inputFieldList = driver.findElements(inputFields);
-            
-            if (inputFieldList.size() == 3) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-        
-        public boolean verifyShowPasswordRadioButton() {
-            WebElement showPasswordRadio = driver.findElement(showPasswordRadioButton);
-            String type = showPasswordRadio.getDomAttribute("type");
-            return showPasswordRadio.isDisplayed() && type.equalsIgnoreCase("radio");
-        }
-        
-        public boolean verifyTermsAndConditionsPresent() {
-         
-                WebElement termsElement = driver.findElement(TermsandConditions);
-                return termsElement.isDisplayed();
-            } 
-        
-        public boolean verifyTermsandConditionRadioButton() {
-            WebElement showTermsandCondition = driver.findElement(showTermsandConditionRadioButton );
-            String type = showTermsandCondition.getDomAttribute("type");
-            return showTermsandCondition.isDisplayed() && type.equalsIgnoreCase("radio");
-        }
-        
-        public boolean verifyTheme() {
-            WebElement body = driver.findElement(By.tagName("body"));
+    }
 
-            String background = body.getCssValue("background");
-            String fontFamily = body.getCssValue("font-family");
+    public WebElement user_enters_in_field_and_performs(String passwordValue, String field, String action) {
+        WebElement inputField;
+        WebElement eyeIcon;
 
-            boolean isPurpleTheme = background.contains("rgb(230,230,250)") || background.contains("purple");
-            boolean isFontCorrect = fontFamily.contains("Poppins") || fontFamily.contains("Open Sans");
-
-            return isPurpleTheme && isFontCorrect;
-        }
-        
-        public void enterValid_clicks_register() {
-           
-            emailField.sendKeys(ConfigReader.get("username"));
-            passwordField.sendKeys(ConfigReader.get("password"));
-            confirmPasswordField.sendKeys(ConfigReader.get("password"));
-            WebElement registerbutton=driver.findElement(registerButton);
-            registerbutton.click();
-        }
-        public void registerUser(String email, String password, String confirmpassword) {
-            emailField.clear();
-            passwordField.clear();
-            confirmPasswordField.clear();
-            emailField.sendKeys(email);
-            passwordField.sendKeys(password);
-            confirmPasswordField.sendKeys(confirmpassword);
-            showPasswordRadio.click();
-            termsElement.click();
-            registerbutton.click();
-        }
-        public void registerUserwithoutclickingTerms(String email, String password, String confirmpassword) {
-            emailField.clear();
-            passwordField.clear();
-            confirmPasswordField.clear();
-            emailField.sendKeys(email);
-            passwordField.sendKeys(password);
-            confirmPasswordField.sendKeys(confirmpassword);
-            showPasswordRadio.click();
-            registerbutton.click();
-            driver.findElement(registerButton).click();
-        }
-        public String verifyResult(String expectedOutput) {
-            if (expectedOutput.equalsIgnoreCase("onboarding")) {
-                String currentUrl = driver.getCurrentUrl();
-            
-                if (currentUrl.contains("onboarding")) {
-                    return "onboarding";
-                } else {
-                    return "redirect_failed";
-                }
-            } else {
-               
-                WebElement errorElement = driver.findElement(errorMessage);
-                String actualErrorText = errorElement.getText().trim();
-                return actualErrorText;
-            }
-        }
-        public WebElement user_enters_in_field_and_performs(String password, String field, String action) {
-            WebElement inputField;
-            WebElement eyeIcon;
-
-            if (field.equalsIgnoreCase("password")) {
-                inputField = passwordField; // assume passwordField is already initialized
-                inputField.clear();
-                inputField.sendKeys(password);
-                eyeIcon = driver.findElement(eyeIconPassword); // locate the eye icon for password
-            } else {
-                inputField = confirmPasswordField; // assume confirmPasswordField is initialized
-                inputField.clear();
-                inputField.sendKeys(password);
-                eyeIcon = driver.findElement(eyeIconConfirmPassword); // locate eye icon for confirm password
-            }
-
-            // Perform the action if it's a click
-            if (action.toLowerCase().contains("click")) {
-                eyeIcon.click();
-            }
-           return inputField;
+        if (field.equalsIgnoreCase("password")) {
+            inputField = driver.findElement(password);
+            eyeIcon = driver.findElement(eyeIconPassword);
+        } else {
+            inputField = driver.findElement(confirmPassword);
+            eyeIcon = driver.findElement(eyeIconConfirmPassword);
         }
 
+        inputField.clear();
+        inputField.sendKeys(passwordValue);
+        if (action.toLowerCase().contains("click")) {
+            logger.info("Clicking eye icon for field: {}", field);
+            eyeIcon.click();
         }
-       
 
-        
-
-
-      
-
-
+        return inputField;
+    }
+}
