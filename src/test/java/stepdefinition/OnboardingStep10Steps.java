@@ -11,11 +11,17 @@ import pageobjects.OnboardingStep10Page;
 
 public class OnboardingStep10Steps {
 
-    TestContextSetup context;
+	TestContextSetup context;
     DriverFactory driverFactory;
     public WebDriver driver;
 
     OnboardingStep10Page step10Page = new OnboardingStep10Page(driver);
+    
+    public OnboardingStep10Steps(TestContextSetup context) {
+
+    	this.context = context;
+    	step10Page = context.getpageobjectmanager().getonboardingstep10page();
+    }
 
     @Given("the user has completed onboarding upto Step 8")
     public void user_completed_onboarding_upto_step8() {

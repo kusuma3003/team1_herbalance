@@ -1,3 +1,4 @@
+
 package driverfactory;
 
 import java.time.Duration;
@@ -11,7 +12,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import utils.PropertyFileReader;
 
-//import utilities.PropertyFileReader;
 
 public class DriverFactory {
 	public static WebDriver driver;

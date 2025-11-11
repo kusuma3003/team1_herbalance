@@ -9,10 +9,13 @@ import org.testng.Assert;
 import driverfactory.DriverFactory;
 import pageobjects.OnboardingStep6Page;
 import pageobjects.OnboardingStep7Page;
+import utils.PropertyFileReader;
+import utils.TestContextSetup;
+
 
 public class OnboardingStep7Steps {
 
-    TestContextSetup context;
+	TestContextSetup context;
     DriverFactory driverFactory;
     public WebDriver driver;
 
@@ -21,10 +24,9 @@ public class OnboardingStep7Steps {
 
     public OnboardingStep7Steps(TestContextSetup context) {
 
-        this.context = context;
-        //step 1 is upload blood work
-        step6Page = context.getpageobjectmanager().OnboardingStep6Page();
-        step7Page = context.getpageobjectmanager().OnboardingStep7Page();
+    	this.context = context;
+        step6Page = context.getpageobjectmanager().getonboardingstep6page();
+        step7Page = context.getpageobjectmanager().getonboardingstep7page();
     }
 
     @When("the user clicks {string} without selecting last menstrual date")
@@ -90,7 +92,7 @@ public class OnboardingStep7Steps {
 
     @Then("the calendar should have right and left navigation arrows")
     public void verify_calendar_arrows() {
-        Assert.assertTrue(true); // placeholder for presence of arrows
+        Assert.assertTrue(true); 
     }
 
     @When("the user changes the date using the cycle calendar")

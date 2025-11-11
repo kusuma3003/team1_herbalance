@@ -29,19 +29,10 @@ Feature: Onboarding Step 10 Functionality and Step 11 UI verification
     And four sections should be visble
     And the section titles "Yes, I take prescription medications", "Yes, I take supplements", "Yes, I take both", "No, I don’t take any medications or supplements" should be displayed
     And description text for each section should be visble
-    And examples like  
-        eg:Yes, I take prescription medications
-        Doctor-prescribed medications
-        Yes, I take supplements
-        Vitamins, minerals, or other supplements
-        Yes, I take both
-        Both medications and supplements
-        No, I don’t take any medications or supplements
-        Not currently taking anything
-      should be displayed
+    And examples like  "eg:Yes, I take prescription medications Doctor-prescribed medications Yes, I take supplements Vitamins, minerals, or other supplements  Yes, I take both Both medications and supplements No, I don’t take any medications or supplements Not currently taking anything should be displayed"
+        
     And a radio button should be displayed in all sections
-    And the info note "Boost Your Wellness Game: Why Knowing Your Meds & Supplements Matters
-        Tailoring your nutrition and fitness to match what you’re taking helps prevent unwanted side effects and keeps your results on track
+    And the info note "Boost Your Wellness Game: Why Knowing Your Meds & Supplements Matters Tailoring your nutrition and fitness to match what you’re taking helps prevent unwanted side effects and keeps your results on track"
       
   Scenario: Section highlighted on selection
     Given the user is on Step 11 of onboarding
