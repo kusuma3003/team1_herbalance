@@ -22,18 +22,7 @@ Feature: Onboarding Scenarios  Step 3  UI verifcation
   Scenario: Verify health condition options
     When the user clicks "Continue Without Report"
     Then 9 radio buttons should be visible
-    And the options should include:       
- 	
-      PCOS
-      Pre-diabetes / Diabetes
-      Sleep apnea
-      Cardiovascular Disease
-      Kidney Disease
-      Hypothyroidism
-      High cholesterol
-      Digestive issues (IBS, leaky gut, etc.)
-      Liver Disease
-      I am perimenopausal or menopausal (age ~45+) should be visible
+    And the options should include:  PCOS Pre-diabetes / Diabetes Sleep apnea Cardiovascular Disease Kidney Disease Hypothyroidism High cholesterol Digestive issues (IBS, leaky gut, etc.) Liver Disease I am perimenopausal or menopausal (age ~45+) should be visible
 
   Scenario: Verify informational note section
     When the user clicks "Continue Without Report"

@@ -9,10 +9,13 @@ import org.testng.Assert;
 import driverfactory.DriverFactory;
 import pageobjects.OnboardingStep6Page;
 import pageobjects.OnboardingStep7Page;
+import utils.PropertyFileReader;
+import utils.TestContextSetup;
+
 
 public class OnboardingStep7Steps {
 
-    TestContextSetup context;
+	TestContextSetup context;
     DriverFactory driverFactory;
     public WebDriver driver;
 
@@ -21,10 +24,10 @@ public class OnboardingStep7Steps {
 
     public OnboardingStep7Steps(TestContextSetup context) {
 
-        this.context = context;
+    	this.context = context;
         //step 1 is upload blood work
-        step6Page = context.getpageobjectmanager().OnboardingStep6Page();
-        step7Page = context.getpageobjectmanager().OnboardingStep7Page();
+        step6Page = context.getpageobjectmanager().getonboardingstep6page();
+        step7Page = context.getpageobjectmanager().getonboardingstep7page();
     }
 
     @When("the user clicks {string} without selecting last menstrual date")

@@ -4,11 +4,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.List;
 import org.openqa.selenium.*;
+import java.time.Duration;
 
 import java.util.Random;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class OnboardingStep9Page {
 
@@ -31,6 +33,8 @@ public class OnboardingStep9Page {
     private By sectionDescriptions = By.cssSelector(".activity-section p");
     private By radioButtons = By.cssSelector(".activity-section input[type='radio']");
     private By infoNote = By.cssSelector(".info-note");
+    
+
 
     public boolean isPageTitleDisplayed() {
         return driver.findElement(title).isDisplayed();
@@ -61,6 +65,7 @@ public class OnboardingStep9Page {
     }
 
     public void clickContinueButton() {
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(continueButton)).click();
     }
 

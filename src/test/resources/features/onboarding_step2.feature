@@ -28,5 +28,4 @@ Feature: Upload Functionality
 
   Scenario: Verify fields on report analysis
     Given the user has uploaded a valid PDF file
-    Then the report analysis page should display: 
-    Blood Test Results,Complete Blood Count, Medical Conditions ,Abnormal Values, 
+    Then the report analysis page should display:Blood Test Results,Complete Blood Count, Medical Conditions ,Abnormal Values, 
